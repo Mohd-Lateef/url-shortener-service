@@ -35,6 +35,7 @@ URL-SHORTNER/
 │   ├── models.py # SQLAlchemy database models.
 │   ├── schemas.py # Pydantic data validation schemas.
 │   └── utils.py # Utility functions (e.g., Base62 conversion).
+|
 ├── .env # Environment variables (e.g., database URL).
 ├── .gitignore # Files and directories to be ignored by Git.
 ├── README.md # Project documentation.
