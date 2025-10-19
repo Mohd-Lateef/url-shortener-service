@@ -4,7 +4,7 @@ from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
 
 
-class URlCreate(Base):
+class URLCreate(Base):
 
     __tablename__ = "urls"
 
