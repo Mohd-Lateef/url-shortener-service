@@ -1,4 +1,4 @@
-import models
+from . import models
 
 Characters = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
@@ -13,4 +13,4 @@ def Base62(id: int):
 
 
 def checkIfExists(url : str,db):
-    return db.query(models.URLCreate).filter(models.URLCreate.original_url == url).first()
+    return db.query(models.URLModel).filter(models.URLModel.original_url == url).first()

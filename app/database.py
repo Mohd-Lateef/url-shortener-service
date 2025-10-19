@@ -1,7 +1,7 @@
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from dotenv import load_dotenv
-import models
+from . import models
 import os
 
 load_dotenv()
@@ -17,4 +17,4 @@ def get_db():
     try:
         yield db
     finally:
-        db.close
+        db.close()
