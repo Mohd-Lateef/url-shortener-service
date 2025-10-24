@@ -1,10 +1,17 @@
 from fastapi import FastAPI, Depends
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from .database import get_db
 from .crud import create_url, redirect_url
 
 app = FastAPI()
-print("main.py loaded")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.post("/ShortenURL")

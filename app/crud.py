@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from .database import get_db
 from fastapi import Depends, HTTPException
-from fastapi.responses import RedirectResponse
+from fastapi.responses import RedirectResponse,PlainTextResponse
 from .utils import Base62, checkIfExists
 from . import models
 
@@ -9,7 +9,7 @@ from . import models
 def create_url(url: str, db: Session):
     existing = checkIfExists(url, db)
     if existing:
-        return f"localhost:8000/{existing.short_code}"
+        return PlainTextResponse(content=f"http://localhost:8000/{existing.short_code}")
     else:
         new_url = models.URLModel(original_url=url)
         db.add(new_url)
@@ -17,7 +17,7 @@ def create_url(url: str, db: Session):
         db.refresh(new_url)
         new_url.short_code = Base62(new_url.id)
         db.commit()
-        return f"localhost:8000/{new_url.short_code}"
+        return PlainTextResponse(content=f"http://localhost:8000/{new_url.short_code}")
 
 
 def redirect_url(shortcode: str, db: Session):
